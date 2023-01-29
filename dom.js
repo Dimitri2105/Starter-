@@ -11,7 +11,7 @@
 
 // console.log(document.getElementById('header-title'));
 
-let header_title = document.getElementById('header-title');
+// let header_title = document.getElementById('header-title');
 
 // console.log(header_title);
 
@@ -27,4 +27,19 @@ let header_title = document.getElementById('header-title');
 
 // document.querySelector(".title").style.color = "Green" ; 
 
+// Getting by elemntByClassName
+
+let items = document.getElementsByClassName("list-group-item");
+console.log(items);
+console.log(items[2]);
+items[2].textContent = "hey there";
+items[2].style.fontWeight = "Bold";
+items[2].style.backgroundColor = "green";
+
+for (let i = 0; i<items.length;i++){
+
+    items[i].style.fontWeight = 'bold';
+    items[i].style.backgroundColor = 'lightgrey'
+    
+}
 
