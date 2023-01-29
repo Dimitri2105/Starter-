@@ -48,21 +48,64 @@
 
 // Get elements By Tagname
 
-let li = document.getElementsByTagName("li");
-console.log(li);
-console.log(li[2]);
-li[1].style.fontWigth = "bold";
-li[2].textContent = "hey there";
-li[2].style.fontWeight = "Bold";
-li[2].style.backgroundColor = "green";
+// let li = document.getElementsByTagName("li");
+// console.log(li);
+// console.log(li[2]);
+// li[1].style.fontWigth = "bold";
+// li[2].textContent = "hey there";
+// li[2].style.fontWeight = "Bold";
+// li[2].style.backgroundColor = "green";
 
 
-for (let i = 0; i<li.length;i++){
+// for (let i = 0; i<li.length;i++){
 
-    li[i].style.fontWeight = 'bold';
-    li[i].style.backgroundColor = 'lightgrey'
+//     li[i].style.fontWeight = 'bold';
+//     li[i].style.backgroundColor = 'lightgrey'
     
-}
+// }
 
+
+//  using QuerySelector
+
+// let header = document.querySelector('#main-header');
+// header.style.borderBottom = 'solid 3px lightblue';
+
+
+// let input = document.querySelector('input');
+// input.value = "Welcome";
+
+// let submit = document.querySelector('input[type="submit"]')
+// submit.value = "Send";
+
+// let items = document.querySelector('.list-group-item');
+// items.style.color = 'red';
+
+// let lastChild = document.querySelector('.list-group-item:last-Child');
+// lastChild.style.color = 'blue';
+
+let secondChild = document.querySelector('.list-group-item:nth-Child(2)');
+secondChild.style.backgroundColor = 'green';
+
+let thirdChild = document.querySelector('.list-group-item:nth-Child(3)');
+thirdChild.style.visibility = 'hidden';
+
+
+//  using QuerySelectorALl
+
+let titles = document.querySelectorAll('.title');
+console.log(titles);
+
+titles[0].textContent = 'Hello';
+
+let seconditem = document.querySelectorAll('.list-group-item');
+seconditem[1].style.color = 'darkGreen';
+
+
+
+let odd = document.querySelectorAll('li:nth-child(odd');
+
+for (let i=0; i<odd.length;i++){
+    odd[i].style.backgroundColor = 'lightGreen'
+}
 
 
