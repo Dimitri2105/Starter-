@@ -29,19 +29,40 @@
 
 // Getting by elemntByClassName
 
-let items = document.getElementsByClassName("list-group-item");
-console.log(items);
-console.log(items[2]);
-items[1].style.fontWigth = "bold";
-items[2].textContent = "hey there";
-items[2].style.fontWeight = "Bold";
-items[2].style.backgroundColor = "green";
+// let items = document.getElementsByClassName("list-group-item");
+// console.log(items);
+// console.log(items[2]);
+// items[1].style.fontWigth = "bold";
+// items[2].textContent = "hey there";
+// items[2].style.fontWeight = "Bold";
+// items[2].style.backgroundColor = "green";
 
 
-for (let i = 0; i<items.length;i++){
+// for (let i = 0; i<items.length;i++){
 
-    items[i].style.fontWeight = 'bold';
-    items[i].style.backgroundColor = 'lightgrey'
+//     items[i].style.fontWeight = 'bold';
+//     items[i].style.backgroundColor = 'lightgrey'
+    
+// }
+
+
+// Get elements By Tagname
+
+let li = document.getElementsByTagName("li");
+console.log(li);
+console.log(li[2]);
+li[1].style.fontWigth = "bold";
+li[2].textContent = "hey there";
+li[2].style.fontWeight = "Bold";
+li[2].style.backgroundColor = "green";
+
+
+for (let i = 0; i<li.length;i++){
+
+    li[i].style.fontWeight = 'bold';
+    li[i].style.backgroundColor = 'lightgrey'
     
 }
+
+
 
