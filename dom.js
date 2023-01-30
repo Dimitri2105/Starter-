@@ -197,7 +197,7 @@ let itemList = document.querySelector('#items');
 // container.insertBefore(newDiv,h1);
 
 
-// console.log(newDiv)
+console.log(newDiv)
 
 
 // Adding element before item 1
