@@ -39,8 +39,16 @@ function onSubmit(e){
     // }
     // else(
 
-        localStorage.setItem('Username',nameInput.value)
-        localStorage.setItem('email',emailInput.value)
+        // localStorage.setItem('Username',nameInput.value)
+        // localStorage.setItem('email',emailInput.value)
+
+        // STORING USERDETAILS AS OBJECTS IN LOCAL STORAGE
+
+        nameAsString = JSON.stringify(nameInput.value)
+        emailAsString = JSON.stringify(emailInput.value)
+
+        localStorage.setItem('Username',nameAsString)
+        localStorage.setItem('email',emailAsString)
 
         
 
@@ -52,3 +60,6 @@ function onSubmit(e){
         
     // )
 }
+
+
+// -----------------------------------------------
