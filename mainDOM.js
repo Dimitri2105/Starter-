@@ -1,10 +1,18 @@
 var form = document.getElementById('addForm');
 var itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
+
 
 // Form submit event
 form.addEventListener('submit', addItem);
 // delete event
 itemList.addEventListener('click', removeItem);
+// filter event
+filter.addEventListener('keyup', filterItems);
+
+
+
+
 // Add item
 function addItem(e){
   e.preventDefault();
@@ -35,10 +43,10 @@ function addItem(e){
     li.appendChild(deletebtn);
    //adding  an edit button
 
-   let editbtn = document.createElement('button');
-   editbtn.className='btn btn-danger btn-sm float-right delete';
-   editbtn.appendChild(document.createTextNode('Edit'));
-   li.append(editbtn);
+//    let editbtn = document.createElement('button');
+//    editbtn.className='btn btn-danger btn-sm float-right delete';
+//    editbtn.appendChild(document.createTextNode('Edit'));
+//    li.append(editbtn);
 
 
 
@@ -60,4 +68,29 @@ function removeItem(e){
         }
     }   
 }
+
+
+// Filter events
+
+function filterItems(e){
+    
+    // converting the text we tye in search bar to lowercase
+    let text = e.target.value.toLowerCase();
+
+    // grabbing all li's within itemlist we already created itemList varibale in begining use that
+    let items = itemList.getElementsByTagName('li');
+
+    // turing the HTML collecion of items to array and iterating them using forEach()
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text) != -1){
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+
+
 
