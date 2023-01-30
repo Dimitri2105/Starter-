@@ -19,13 +19,20 @@ function addItem(e){
 
   // Get input value
   var newItem = document.getElementById('item').value;
+  var newItem2 = document.getElementById('item-2').value;
 
   // Create new li element
   var li = document.createElement('li');
+  
   // Add class
   li.className = 'list-group-item';
+//   li2.className = 'list-group-item';
+
+
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
+  
+  li.appendChild(document.createTextNode(newItem2));
   
 
    // Creating a delete button
@@ -43,15 +50,17 @@ function addItem(e){
     li.appendChild(deletebtn);
    //adding  an edit button
 
-//    let editbtn = document.createElement('button');
-//    editbtn.className='btn btn-danger btn-sm float-right delete';
-//    editbtn.appendChild(document.createTextNode('Edit'));
-//    li.append(editbtn);
+   let editbtn = document.createElement('button');
+   editbtn.className='btn btn-light btn-sm float-right delete';
+   editbtn.appendChild(document.createTextNode('Edit'));
+   li.append(editbtn);
 
 
 
   // Append li to list
+
   itemList.appendChild(li);
+  
 
   
 
@@ -83,7 +92,8 @@ function filterItems(e){
     // turing the HTML collecion of items to array and iterating them using forEach()
     Array.from(items).forEach(function(item){
         var itemName = item.firstChild.textContent;
-        if(itemName.toLowerCase().indexOf(text) != -1){
+        let item2Name = item.childNodes[1].textContent;
+        if(itemName.toLowerCase().indexOf(text) != -1 || item2Name.toLowerCase().indexOf(text) != -1){
           item.style.display = 'block';
         } else {
           item.style.display = 'none';
