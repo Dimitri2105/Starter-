@@ -20,10 +20,7 @@ function addItem(obj){
     let phoneNumber = phoneInput.value
 
     let li = document.createElement('li');
-    li.className='items'
-    // li.appendChild(document.createTextNode(user))
-    // li.appendChild(document.createTextNode(emailID))
-    // li.appendChild(document.createTextNode(phoneNumber))
+    li.className='items';
     li.textContent =  li.textContent + obj.user + '    ' + obj.emailID + '    ' + obj.phoneNumber
     itemInput.append(li)
 
@@ -33,12 +30,7 @@ function addItem(obj){
     deletebtn.appendChild(document.createTextNode('X'))
     li.append(deletebtn)
 
-    deletebtn.onclick = () =>
-    {
-        localStorage.removeItem(obj.emailID)
-        itemInput.removeChild(li)
-
-    }
+    deletebtn.onclick = (e) => deleteUser(e,obj._id) 
 
     let editbtn = document.createElement('button')
     editbtn.appendChild(document.createTextNode('Edit'))
@@ -56,6 +48,7 @@ function addItem(obj){
         phoneInput.value = obj.phoneNumber
     }  
 }
+
 function saveToStorage(e)
 {
     e.preventDefault()
@@ -68,7 +61,8 @@ function saveToStorage(e)
     // array.push(obj)
     // localStorage.setItem(obj.emailID,JSON.stringify(array))
 
-    axios.post("https://crudcrud.com/api/ff051174c1bf4da286e19acc37f447bf/appintmentData",obj)
+    axios
+    .post("https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData",obj)
     .then( (response) =>{
         addItem(response.data)
         // console.log(response)
@@ -82,7 +76,7 @@ function saveToStorage(e)
 
 window.addEventListener("DOMContentLoaded",()=>{
 
-    axios.get("https://crudcrud.com/api/ff051174c1bf4da286e19acc37f447bf/appintmentData")
+    axios.get("https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData")
     .then( (response) => {
         for( var i = 0;i<response.data.length;i++){
             addItem(response.data[i])
@@ -95,3 +89,29 @@ window.addEventListener("DOMContentLoaded",()=>{
         console.log(error)
     })
 })
+
+
+function deleteUser(e,obj_id){
+
+    
+    axios.delete(`https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData/${obj_id}`)
+    .then( (response) =>{
+
+        // console.log(e.target.parentElement)
+        itemInput.removeChild(e.target.parentElement)
+        // console.log(e)
+
+        
+
+        
+        
+    })
+    .catch( (error) => {
+
+        document.body.innerHTML =  document.body.innerHTML + "<h3> Something Went Wrong </h3>"
+        console.log(error)
+        
+    })
+
+    }
+
