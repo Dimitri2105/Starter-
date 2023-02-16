@@ -77,8 +77,21 @@ function saveToStorage(e)
         document.body.innerHTML =  document.body.innerHTML + "<h3> Something Went Wrong </h3>"
         console.log(error)
     })
-
     // addItem(obj)
-
-
 }
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+    axios.get("https://crudcrud.com/api/ff051174c1bf4da286e19acc37f447bf/appintmentData")
+    .then( (response) => {
+        for( var i = 0;i<response.data.length;i++){
+            addItem(response.data[i])
+        }
+        
+
+    })
+    .catch( (error) => {
+        document.body.innerHTML =  document.body.innerHTML + "<h3> Something Went Wrong </h3>"
+        console.log(error)
+    })
+})
