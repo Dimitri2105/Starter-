@@ -15,9 +15,9 @@ function addItem(obj){
 
     
 
-    let user = nameInput.value
-    let emailID = emailInput.value
-    let phoneNumber = phoneInput.value
+    let user = obj.user
+    let emailID = obj.emailID
+    let phoneNumber = obj.phoneNumber
 
     let li = document.createElement('li');
     li.className='items';
@@ -38,15 +38,16 @@ function addItem(obj){
     editbtn.style.width='50px'
     li.appendChild(editbtn)
 
-    editbtn.onclick = () =>{
+    // editbtn.onclick = () =>{
 
-        localStorage.removeItem(obj.emailID)
-        itemInput.removeChild(li)
+    //     localStorage.removeItem(obj.emailID)
+    //     itemInput.removeChild(li)
 
-        nameInput.value = obj.user
-        emailInput.value = obj.emailID
-        phoneInput.value = obj.phoneNumber
-    }  
+    //     nameInput.value = obj.user
+    //     emailInput.value = obj.emailID
+    //     phoneInput.value = obj.phoneNumber
+    // }  
+    editbtn.onclick =(e) => updateUser(e,obj,obj._id)
 }
 
 function saveToStorage(e)
@@ -62,7 +63,7 @@ function saveToStorage(e)
     // localStorage.setItem(obj.emailID,JSON.stringify(array))
 
     axios
-    .post("https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData",obj)
+    .post("https://crudcrud.com/api/279f884b81934afe9b9d16e2bf28a019/appointmentData",obj)
     .then( (response) =>{
         addItem(response.data)
         // console.log(response)
@@ -76,7 +77,7 @@ function saveToStorage(e)
 
 window.addEventListener("DOMContentLoaded",()=>{
 
-    axios.get("https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData")
+    axios.get("https://crudcrud.com/api/279f884b81934afe9b9d16e2bf28a019/appointmentData")
     .then( (response) => {
         for( var i = 0;i<response.data.length;i++){
             addItem(response.data[i])
@@ -94,17 +95,12 @@ window.addEventListener("DOMContentLoaded",()=>{
 function deleteUser(e,obj_id){
 
     
-    axios.delete(`https://crudcrud.com/api/94a2d47673624b09b0312159dbb535f6/appintmentData/${obj_id}`)
+    axios.delete(`https://crudcrud.com/api/279f884b81934afe9b9d16e2bf28a019/appointmentData/${obj_id}`)
     .then( (response) =>{
 
         // console.log(e.target.parentElement)
         itemInput.removeChild(e.target.parentElement)
-        // console.log(e)
-
-        
-
-        
-        
+        // console.log(e)    
     })
     .catch( (error) => {
 
@@ -114,4 +110,57 @@ function deleteUser(e,obj_id){
     })
 
     }
+
+// function updateUser(e,obj,obj_id){
+
+//     nameInput.value = obj.user
+//     emailInput.value = obj.emailID
+//     phoneInput.value = obj.phoneNumber
+
+//     axios
+//     .put(`https://crudcrud.com/api/279f884b81934afe9b9d16e2bf28a019/appointmentData/${obj_id}`,obj)
+//     .then( (response) => {
+        
+//         let li = e.target.parentElement;
+//         li.textContent = obj.user + '    ' + obj.emailID + '    ' + obj.phoneNumber
+//     })
+//     .catch( (error) => {
+
+//         document.body.innerHTML =  document.body.innerHTML + "<h3> Something Went Wrong </h3>"
+//         console.log(error)
+        
+//     })
+// }
+
+// function updateUser(e, obj, obj_id) {
+//   nameInput.value = obj.user
+//   emailInput.value = obj.emailID
+//   phoneInput.value = obj.phoneNumber
+
+//   // Update obj with new values from input fields
+//   obj.user = nameInput.value
+//   obj.emailID = emailInput.value
+//   obj.phoneNumber = phoneInput.value
+
+//   axios.put(`https://crudcrud.com/api/279f884b81934afe9b9d16e2bf28a019/appointmentData/${obj_id}`,obj)
+//     .then((response) => {
+//       let li = e.target.parentElement;
+//       li.textContent = obj.user + '    ' + obj.emailID + '    ' + obj.phoneNumber
+//     })
+//     .catch((error) => {
+//       document.body.innerHTML = document.body.innerHTML + "<h3> Something Went Wrong </h3>"
+//       console.log(error)
+//     })
+// }
+
+
+
+
+//  Using simple logic
+
+
+function updateUser(e, obj, obj_id) {
+
+    deleteUser(e,obj_id)
+}
 
